@@ -4,12 +4,14 @@ def lance_des
 end
 
 def game 
+    x = 0
     niveau_joueur = 1
     puts "Le jeu commence ! 
     Vous êtes au niveau #{niveau_joueur}"
     while (niveau_joueur < 10)
         lance_des
         puts " Le résultat du dès est #{@var}"
+        x += 1
         if (@var == 5 || @var == 6)
             niveau_joueur +=1
             puts "Vous montez d'un niveau ! 
@@ -24,19 +26,19 @@ def game
                 Vous êtes désormais au niveau #{niveau_joueur}"
         end
     end
-    @a=1
+    puts "le nombre de dès lancer pour gagner est de #{x}"
+    return x 
 end
 
 def average_finish_time
-nb_lance_dès = 0
-nb_game = 0
-    while @a < 100 
-        
-        nb_game +=1
-        nb_lance_dès +=1
-    end
-puts "le nombre de lancés moyen pour atteindre le niveau 10 est de #{nb_lance_dès/100}"
-
+    nb_lance_dès = 0
+    j = 0
+        while j <= 100 
+            nb_lance_dès += game
+            j+=1
+        end
+    moy = nb_lance_dès/100 
+    puts "le nombre de lancés moyen pour atteindre le niveau 10 est de #{moy}"
 end
 
 def perform
